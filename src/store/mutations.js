@@ -9,6 +9,10 @@ const mutations = {
     state.loadingFlag = loadingFlag;
   },
 
+  [types.ONE_LIST](state, oneList) {
+    state.oneList = oneList;
+  },
+
   [types.HOME_DATA](state, homeData) {
     state.homeData = homeData;
   },

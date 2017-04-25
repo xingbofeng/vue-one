@@ -1,6 +1,7 @@
 const state = {
   netStatus: '',
   loadingFlag: true,
+  oneList: [],
   homeData: {},
 };
 

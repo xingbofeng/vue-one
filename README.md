@@ -2,7 +2,7 @@
 
 The One Project based on vue.js.
 
-Thanks for [Api](https://github.com/jokermonn/-Api/blob/master/ONEv3.5.0~.md)
+Thanks for [Api](https://github.com/jokermonn/-Api/blob/master/ONEv3.5.0~.md).
 
 ## Build Setup
 
@@ -27,13 +27,13 @@ npm test
 ```
 
 ## Technology stack
-* `vue` + `vuex` + `vue-Router`
-* `iview`
-* `vue-lazyload`
-* `vuex-router-sync`
+* `vue` + `vuex` + `vue-router`  vue based project
+* `iview` UI library
+* `vue-lazyload` help us lazyload images
+* `vuex-router-sync` mutations of router setting in store
 * `vue-resource`
-* `http-proxy-middleware` + `express`
-* `axios`
+* `http-proxy-middleware` + `express` dev environment we use `webpack-dev-server` and `http-proxy-middleware`, and online we use `express` and `http-proxy-middleware`
+* `axios` ajax library
 
 ## Directory
 ```
@@ -60,9 +60,11 @@ npm test
 │   ├── main.js
 │   ├── util.js
 │   ├── currency.js
-│   ├── assets/  images
+│   ├── assets/  images about this project
 │   ├── components/
 │   ├── router/
+│   │   ├── index.js
+│   │   └── Home/ we can access '/' to see the HomePage container.
 │   ├── store
 │   │   ├── index.js
 │   │   ├── actions.js
