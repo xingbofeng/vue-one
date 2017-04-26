@@ -61,9 +61,13 @@ export default {
 }
 
 header {
+  position: fixed;
+  top: 0;
+  left: 0;
   padding: 0.1rem 0.2rem;
   color: #333;
   width: 100%;
+  background-color: #fff;
 }
 
 .title {

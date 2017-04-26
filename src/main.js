@@ -13,7 +13,9 @@ import store from './store';
 
 Vue.use(VueResource);
 Vue.use(iView);
-Vue.use(VueLazyload);
+Vue.use(VueLazyload, {
+  preLoad: 2,
+});
 Vue.config.productionTip = false;
 sync(store, router);
 
