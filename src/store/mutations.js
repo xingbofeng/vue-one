@@ -13,8 +13,11 @@ const mutations = {
     state.oneList = oneList;
   },
 
-  [types.HOME_DATA](state, homeData) {
-    state.homeData = homeData;
+  [types.HOME_DATA](state, data) {
+    state.homeData = Object.assign({}, state.homeData, {
+      ...state.homeData,
+      ...data,
+    });
   },
 };
 
