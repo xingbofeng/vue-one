@@ -9,16 +9,30 @@ const mutations = {
     state.loadingFlag = loadingFlag;
   },
 
+  [types.ID_LIST](state, idList) {
+    state.idList = idList;
+  },
+
   [types.ONE_LIST](state, oneList) {
     state.oneList = oneList;
   },
 
-  [types.HOME_DATA](state, data) {
-    state.homeData = Object.assign({}, state.homeData, {
-      ...state.homeData,
-      ...data,
+  [types.ESSAY](state, essay) {
+    state.essay = Object.assign({}, state.essay, {
+      [`${essay.content_id}`]: essay,
     });
   },
+
+  [types.QUESTION](state, question) {
+    state.question = Object.assign({}, state.question, {
+      [`${question.question_id}`]: question,
+    });
+  },
+
+  [types.READING_LIST](state, readingList) {
+    state.readingList = readingList;
+  },
+
 };
 
 export default mutations;

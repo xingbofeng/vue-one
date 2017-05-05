@@ -7,37 +7,40 @@ export default {
   path: '/',
   name: 'Home',
   component: Home,
-  beforeEnter: (to, before, next) => {
-    // 两次请求，一次拿到一个list，一次拿到首页的homeData！
-    if (store.state.homeData.oneTitle.length === 0) {
-      axios.get('/api/onelist/idlist')
+  beforeEnter: async (to, before, next) => {
+    if (store.state.idList.length === 0) {
+      let idList;
+      // 请求idList
+      await axios.get('/api/onelist/idlist')
         .then((response) => {
-          // 拿到最新的一个list
-          const list = response.data.data;
-          store.commit(types.ONE_LIST, list);
-          // 首页只需要第一个数据
-          axios.get(`/api/onelist/${list[0]}/0`).then((response) => {
-            // 首页数据
-            const oneTitle = response.data.data;
-            store.commit(types.HOME_DATA, {
-              oneTitle,
-            });
-          }).catch((error) => {
-            store.commit(types.NET_STATUS, error);
-          });
+          idList = response.data.data;
+          store.commit(types.ID_LIST, idList);
         })
         .catch((error) => {
           store.commit(types.NET_STATUS, error);
         });
-    }
-    // 获取最新的readingList
-    if (store.state.homeData.readingList.length === 0) {
-      axios.get('/api/channel/reading/more/0')
+      let oneList;
+      // 请求oneList
+      await axios.get(`/api/onelist/${idList[0]}/0`).then((response) => {
+        oneList = response.data.data;
+        store.commit(types.ONE_LIST, oneList);
+      }).catch((error) => {
+        store.commit(types.NET_STATUS, error);
+      });
+      let essay;
+      let question;
+      // 请求首页所需要的阅读和问答
+      await axios.all([
+        axios.get(`/api/essay/${oneList.content_list[1].item_id}`),
+        axios.get(`/api/question/${oneList.content_list[3].item_id}`),
+      ])
         .then((response) => {
-          const readingList = response.data.data;
-          store.commit(types.HOME_DATA, {
-            readingList,
-          });
+          // 阅读
+          essay = response[0].data.data;
+          store.commit(types.ESSAY, essay);
+          // 问答
+          question = response[1].data.data;
+          store.commit(types.QUESTION, question);
         }).catch((error) => {
           store.commit(types.NET_STATUS, error);
         });

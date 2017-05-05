@@ -1,11 +1,11 @@
 const state = {
   netStatus: '',
   loadingFlag: true,
+  idList: [],
   oneList: [],
-  homeData: {
-    oneTitle: [],
-    readingList: [],
-  },
+  essay: {},
+  question: {},
+  readingList: [],
 };
 
 export default state;

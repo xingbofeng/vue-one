@@ -3,9 +3,7 @@
     <top-header />
     <main>
       <one-item
-        v-for="item in oneTitle.content_list"
-        :content="item"
-        :key="item.id"
+        :content="oneTitle.content_list[0]"
       />
     </main>
   </div>
@@ -33,10 +31,7 @@ export default {
   computed: {
     ...mapState({
       oneTitle(state) {
-        return state.homeData.oneTitle;
-      },
-      readingList(state) {
-        return state.homeData.readingList;
+        return state.oneList;
       },
     }),
   },
