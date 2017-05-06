@@ -9,6 +9,7 @@ export default {
   component: Home,
   beforeEnter: async (to, before, next) => {
     if (store.state.idList.length === 0) {
+      store.commit(types.LOADING_FLAG, true);
       let idList;
       // 请求idList
       await axios.get('/api/onelist/idlist')
@@ -17,7 +18,7 @@ export default {
           store.commit(types.ID_LIST, idList);
         })
         .catch((error) => {
-          store.commit(types.NET_STATUS, error);
+          store.commit(types.NET_STATUS, error.response.status);
         });
       let oneList;
       // 请求oneList
@@ -25,7 +26,7 @@ export default {
         oneList = response.data.data;
         store.commit(types.ONE_LIST, oneList);
       }).catch((error) => {
-        store.commit(types.NET_STATUS, error);
+        store.commit(types.NET_STATUS, error.response.status);
       });
       // 请求首页所需要的一周语文、文章、问答、音乐和电影
       const oneListContent = oneList.content_list.map((value) => {
@@ -79,9 +80,11 @@ export default {
           });
         })
         .catch((error) => {
-          store.commit(types.NET_STATUS, error);
+          store.commit(types.NET_STATUS, error.response.status);
         });
     }
+    // 结束加载
+    store.commit(types.LOADING_FLAG, false);
     next();
   },
 };

@@ -1,8 +1,8 @@
 <template>
   <Spin fix>
-    <img src="../../assets/doubanLogo.png" alt="豆瓣logo" class="logo">
+    <img src="../../assets/logo.png" alt="一个logo" class="logo">
     <icon type="load-c" size=120 class="spinIconLoad"></icon>
-    <h1 class="prompt">豆瓣：我们的精神部落</h1>
+    <h1 class="prompt">ONE·一个 每日阅读</h1>
   </Spin>
 </template>
 
@@ -37,7 +37,7 @@ export default {
 }
 
 .ivu-icon, .prompt {
-  color: #00b600;
+  color: #000;
 }
 
 .prompt {

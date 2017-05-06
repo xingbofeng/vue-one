@@ -18,15 +18,9 @@
 
 <script>
 export default {
-  name: 'OneItem',
+  name: 'OneImage',
 
   props: ['content'],
-
-  data() {
-    return {
-      msg: 'template',
-    };
-  },
 
   computed: {
     day() {

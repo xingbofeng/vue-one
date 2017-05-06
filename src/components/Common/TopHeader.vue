@@ -9,12 +9,16 @@
         <Icon type="search" size="25"></Icon>
       </div>
     </div>
-    <aside :class="{ active: isActive, hidden: !isActive }">
+    <aside
+      :class="{ active: isActive, hidden: !isActive }"
+      style="display: none;"
+      ref="aside"
+    >
       <div @click="changeAside(false)">
-        <Icon type="chevron-left" size="25"></Icon>   
+        <Icon :type="iconType" size="25"></Icon>   
       </div>
       <router-link to="/one"><h2>图文</h2></router-link>
-      <router-link to="/article"><h2>阅读</h2></router-link>
+      <router-link to="/essay"><h2>阅读</h2></router-link>
       <router-link to="/music"><h2>音乐</h2></router-link>
       <router-link to="/movie"><h2>影视</h2></router-link>
       <a href="https://github.com/xingbofeng/vue-one"><h2>GitHub</h2></a>
@@ -30,12 +34,22 @@ export default {
   data() {
     return {
       isActive: false,
+      iconType: 'chevron-left',
     };
   },
 
   methods: {
     changeAside(flag) {
+      // fix 最开始展现的bug(其原因是DOM先渲染才有组件)
+      this.$refs.aside.style.display = 'block';
+      // 切换顶部导航栏状态
       this.isActive = flag;
+      // 切换icon类型
+      if (flag) {
+        this.iconType = 'chevron-left';
+      } else {
+        this.iconType = 'chevron-right';
+      }
     },
   },
 };

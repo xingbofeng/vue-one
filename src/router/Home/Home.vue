@@ -2,24 +2,24 @@
   <div id="home">
     <top-header />
     <main>
-      <one-item
-        :content="oneTitle.content_list[0]"
+      <one-image
+        :content="home.image"
       />
     </main>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapGetters } from 'vuex';
 import TopHeader from '../../components/Common/TopHeader';
-import OneItem from '../../components/Home/OneItem';
+import OneImage from '../../components/Home/OneImage';
 
 export default {
   name: 'Home',
 
   components: {
     TopHeader,
-    OneItem,
+    OneImage,
   },
 
   data() {
@@ -29,11 +29,7 @@ export default {
   },
 
   computed: {
-    ...mapState({
-      oneTitle(state) {
-        return state.oneList;
-      },
-    }),
+    ...mapGetters(['home']),
   },
 };
 </script>
