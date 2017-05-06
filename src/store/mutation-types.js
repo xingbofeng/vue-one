@@ -10,5 +10,9 @@ export const ONE_LIST = 'ONE_LIST';
 export const ESSAY = 'ESSAY';
 // 问答详情
 export const QUESTION = 'QUESTION';
+// 电影详情
+export const MOVIE = 'MOVIE';
+// 音乐详情
+export const MUSIC = 'MUSIC';
 // 阅读list
 export const READING_LIST = 'READING_LIST';

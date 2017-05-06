@@ -29,6 +29,19 @@ const mutations = {
     });
   },
 
+  [types.MOVIE](state, movie) {
+    state.movie = movie.data.reduce((pre, current) =>
+      Object.assign({}, pre, {
+        [`${current.movie_id}`]: current,
+      }), {});
+  },
+
+  [types.MUSIC](state, music) {
+    state.music = Object.assign({}, state.music, {
+      [`${music.id}`]: music,
+    });
+  },
+
   [types.READING_LIST](state, readingList) {
     state.readingList = readingList;
   },

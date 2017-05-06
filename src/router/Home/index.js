@@ -27,23 +27,64 @@ export default {
       }).catch((error) => {
         store.commit(types.NET_STATUS, error);
       });
-      let essay;
-      let question;
-      // 请求首页所需要的阅读和问答
-      await axios.all([
-        axios.get(`/api/essay/${oneList.content_list[1].item_id}`),
-        axios.get(`/api/question/${oneList.content_list[3].item_id}`),
-      ])
-        .then((response) => {
-          // 阅读
-          essay = response[0].data.data;
-          store.commit(types.ESSAY, essay);
-          // 问答
-          question = response[1].data.data;
-          store.commit(types.QUESTION, question);
-        }).catch((error) => {
-          store.commit(types.NET_STATUS, error);
-        });
+      // 请求首页所需要的一周语文、文章、问答、音乐和电影
+      oneList.content_list.forEach((value) => {
+        switch (value.content_type) {
+          case '1': {
+            // 一周语文
+            axios.get(`/api/essay/${value.item_id}`)
+              .then((response) => {
+                store.commit(types.ESSAY, response.data.data);
+              }).catch((error) => {
+                store.commit(types.NET_STATUS, error);
+              });
+            break;
+          }
+          case '2': {
+            // 文章
+            axios.get(`/api/essay/${value.item_id}`)
+              .then((response) => {
+                store.commit(types.ESSAY, response.data.data);
+              }).catch((error) => {
+                store.commit(types.NET_STATUS, error);
+              });
+            break;
+          }
+          case '3': {
+            // 问答
+            axios.get(`/api/question/${value.item_id}`)
+              .then((response) => {
+                store.commit(types.QUESTION, response.data.data);
+              }).catch((error) => {
+                store.commit(types.NET_STATUS, error);
+              });
+            break;
+          }
+          case '4': {
+            // 音乐
+            axios.get(`/api/music/detail/${value.item_id}`)
+              .then((response) => {
+                store.commit(types.MUSIC, response.data.data);
+              }).catch((error) => {
+                store.commit(types.NET_STATUS, error);
+              });
+            break;
+          }
+          case '5': {
+            // 电影
+            axios.get(`api/movie/${value.item_id}/story/1/0`)
+              .then((response) => {
+                store.commit(types.MOVIE, response.data.data);
+              }).catch((error) => {
+                store.commit(types.NET_STATUS, error);
+              });
+            break;
+          }
+          default: {
+            break;
+          }
+        }
+      });
     }
     next();
   },
