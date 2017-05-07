@@ -9,7 +9,7 @@
         {{ month }}
       </p>
       <p class="text-content-short">{{ content.forward }}</p>
-      <div>
+      <div @click="chevronDown">
         <Icon type="chevron-down" size="23"></Icon>
       </div>
     </div>
@@ -30,6 +30,13 @@ export default {
     month() {
       const dateArr = new Date(this.content.post_date).toString().split(' ');
       return `${this.content.volume} | ${dateArr[1]}. ${dateArr[3]}`;
+    },
+  },
+
+  methods: {
+    chevronDown() {
+      const reading = document.querySelector('.reading');
+      reading.scrollIntoView();
     },
   },
 };

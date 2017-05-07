@@ -6,6 +6,7 @@ import Essay from './Essay';
 import Music from './Music';
 import Movie from './Movie';
 import About from './About';
+import Question from './Question';
 
 Vue.use(Router);
 
@@ -18,5 +19,6 @@ export default new Router({
     Music,
     Movie,
     About,
+    Question,
   ],
 });
