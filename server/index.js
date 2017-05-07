@@ -1,8 +1,13 @@
-var express = require('express');
-var proxy = require('http-proxy-middleware');
+const express = require('express');
+const proxy = require('http-proxy-middleware');
+const search = require('./middlewares/search');
 
-var app = express();
-app.use('/static', express.static('static'));
+const app = express();
+
+// app.use('/static', express.static('static'));
+
+app.use('/search/:searchString', search);
+
 app.use('/api', proxy({
   target: 'http://v3.wufazhuce.com:8000',
   changeOrigin: true,
@@ -11,7 +16,10 @@ app.use('/api', proxy({
   },
 }));
 
-app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/index.html');
+// app.get('/', function(req, res) {
+//   res.sendFile(__dirname + '/index.html');
+// });
+
+app.listen(3001, () => {
+  console.log('server run at localhost:3001');
 });
-app.listen(3000);
