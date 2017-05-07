@@ -8,22 +8,28 @@ Thanks for [Api](https://github.com/jokermonn/-Api/blob/master/ONEv3.5.0~.md).
 
 ``` bash
 # install dependencies
-npm install
+yarn install
 
 # serve with hot reload at localhost:8080
-npm run dev
+yarn run dev
+
+# start the server at localhost:3001
+yarn run server
+
+# stop the server
+yarn run stop
 
 # build for production with minification
-npm run build
+yarn run build
 
 # build for production and view the bundle analyzer report
-npm run build --report
+yarn run build --report
 
 # run unit tests
-npm run unit
+yarn run unit
 
 # run all tests
-npm test
+yarn test
 ```
 
 ## Technology stack
@@ -34,6 +40,8 @@ npm test
 * `vue-resource`
 * `http-proxy-middleware` + `express` dev environment we use `webpack-dev-server` and `http-proxy-middleware`, and online we use `express` and `http-proxy-middleware`
 * `axios` ajax library
+* `yarn` package manager.
+* `superagent` + `cheerio` write a spider to get the data.
 
 ## Directory
 ```
