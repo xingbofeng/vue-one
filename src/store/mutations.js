@@ -14,7 +14,9 @@ const mutations = {
   },
 
   [types.ONE_LIST](state, oneList) {
-    state.oneList = oneList;
+    state.oneList = Object.assign({}, state.oneList, {
+      [`${oneList.id}`]: oneList,
+    });
   },
 
   [types.ESSAY](state, essay) {

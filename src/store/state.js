@@ -2,7 +2,7 @@ const state = {
   netStatus: '',
   loadingFlag: true,
   idList: [],
-  oneList: [],
+  oneList: {},
   essay: {},
   question: {},
   music: {},

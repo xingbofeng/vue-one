@@ -10,7 +10,7 @@ const getters = {
       const essay = Object.values(state.essay)[0];
       const question = Object.values(state.question)[0];
       return {
-        image: state.oneList.content_list[0], // 首页头图
+        image: Object.values(state.oneList)[0].content_list[0], // 首页头图
         essay: {
           link: `/essay/${essay.content_id}`,
           author: essay.hp_author,
