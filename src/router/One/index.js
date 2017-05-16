@@ -48,6 +48,7 @@ export default {
         await axios.all(request)
           .then((response) => {
             response.forEach((value) => {
+              document.title = '图文 - 「ONE · 一个」';
               store.commit(types.ONE_LIST, value.data.data);
             });
           })
