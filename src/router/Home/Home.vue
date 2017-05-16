@@ -32,6 +32,7 @@
         <button class="moreBtn">更多内容 ></button>
       </router-link>
     </main>
+    <page-end />
   </div>
 </template>
 
@@ -40,6 +41,7 @@ import { mapGetters } from 'vuex';
 import TopHeader from '../../components/Common/TopHeader';
 import OneImage from '../../components/Home/OneImage';
 import Reading from '../../components/Home/Reading';
+import PageEnd from '../../components/Common/PageEnd';
 
 export default {
   name: 'Home',
@@ -48,6 +50,7 @@ export default {
     TopHeader,
     OneImage,
     Reading,
+    PageEnd,
   },
 
   computed: {

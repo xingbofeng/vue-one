@@ -14,8 +14,19 @@ export default {
       path: ':oneId',
       component: OneInfos,
       name: 'OneInfos',
-      beforeEnter: (to, before, next) => {
+      beforeEnter: async (to, before, next) => {
         store.commit(types.LOADING_FLAG, true);
+        const oneId = to.params.oneId;
+        if (!store.state.oneInfos[oneId]) {
+          await axios.get(`/api/hp/detail/${oneId}`)
+            .then((response) => {
+              if (!response.data.data) {
+                // fix 一直加载中的bug
+                store.commit(types.NET_STATUS, '404');
+              }
+              store.commit(types.ONE_INFOS, response.data.data);
+            });
+        }
         store.commit(types.LOADING_FLAG, false);
         next();
       },

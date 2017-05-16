@@ -87,7 +87,7 @@ export default {
             };
           }
           return {
-            request: axios.get(`api/movie/${value.item_id}/story/1/0`), // 电影
+            request: axios.get(`/api/movie/${value.item_id}/story/1/0`), // 电影
             type: types.MOVIE,
           };
         }

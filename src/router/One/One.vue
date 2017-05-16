@@ -8,6 +8,7 @@
         :key="item.id"
       />
     </main>
+    <page-end />
   </div>
 </template>
 
@@ -15,6 +16,7 @@
 import { mapGetters } from 'vuex';
 import TopHeader from './../../components/Common/TopHeader';
 import OneItem from './../../components/One/OneItem';
+import PageEnd from '../../components/Common/PageEnd';
 
 export default {
   name: 'One',
@@ -22,6 +24,7 @@ export default {
   components: {
     TopHeader,
     OneItem,
+    PageEnd,
   },
 
   computed: {

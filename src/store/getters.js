@@ -38,6 +38,7 @@ const home = (state) => {
  */
 const one = (state) => {
   if (!isObjectEmpty(state.oneList)) {
+    // 先取反
     const imageValues = Object.values(state.oneList).reverse();
     return imageValues.map((value) => {
       const {
@@ -51,7 +52,7 @@ const one = (state) => {
         words_info,
       } = value.content_list[0];
       return {
-        id: content_id, // eslint-disable-line
+        id: content_id,
         date: post_date.match(/\d+-\d+-\d+/)[0],
         volume,
         imgUrl: img_url,
@@ -64,9 +65,36 @@ const one = (state) => {
   return [];
 };
 
+const oneInfos = (state) => {
+  const oneId = state.route.params.oneId;
+  if (!oneId) {
+    // 保证在oneInfos页面才有
+    return {};
+  }
+  const {
+    hpcontent_id,
+    hp_makettime,
+    hp_title,
+    hp_img_original_url,
+    hp_author,
+    hp_content,
+    text_authors,
+  } = state.oneInfos[oneId];
+  return {
+    id: hpcontent_id,
+    date: hp_makettime,
+    volume: hp_title,
+    imgUrl: hp_img_original_url,
+    info: hp_author,
+    forward: hp_content,
+    words: text_authors,
+  };
+};
+
 const getters = {
   home,
   one,
+  oneInfos,
 };
 
 export default getters;

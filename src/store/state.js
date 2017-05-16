@@ -3,6 +3,7 @@ const state = {
   loadingFlag: true,
   idList: [],
   oneList: {},
+  oneInfos: {},
   essay: {},
   question: {},
   music: {},
