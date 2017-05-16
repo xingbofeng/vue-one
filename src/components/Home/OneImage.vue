@@ -34,6 +34,9 @@ export default {
   },
 
   methods: {
+    /**
+     * 点击向下按钮，滚动一屏
+     */
     chevronDown() {
       const reading = document.querySelector('.reading');
       reading.scrollIntoView();

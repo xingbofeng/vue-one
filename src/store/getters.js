@@ -38,8 +38,8 @@ const home = (state) => {
  */
 const one = (state) => {
   if (!isObjectEmpty(state.oneList)) {
-    // 先取反
-    const imageValues = Object.values(state.oneList).reverse();
+    // 提取需要的信息并按照时间排序
+    const imageValues = Object.values(state.oneList);
     return imageValues.map((value) => {
       const {
         content_id,
@@ -60,11 +60,15 @@ const one = (state) => {
         forward,
         words: words_info,
       };
-    });
+    }).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   }
   return [];
 };
 
+/**
+ * @param  {[object]} store.state
+ * @return {[object]} oneInfos
+ */
 const oneInfos = (state) => {
   const oneId = state.route.params.oneId;
   if (!oneId) {

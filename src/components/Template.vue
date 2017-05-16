@@ -6,11 +6,6 @@
 <script>
 export default {
   name: 'Template',
-  data() {
-    return {
-      msg: 'template',
-    };
-  },
 };
 </script>
 

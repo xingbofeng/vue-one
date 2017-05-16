@@ -14,7 +14,7 @@ yarn install
 yarn run dev
 
 # start the server at localhost:3001
-yarn run server
+yarn run serve
 
 # stop the server
 yarn run stop

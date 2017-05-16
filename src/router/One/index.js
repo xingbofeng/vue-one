@@ -23,8 +23,12 @@ export default {
               if (!response.data.data) {
                 // fix 一直加载中的bug
                 store.commit(types.NET_STATUS, '404');
+              } else {
+                store.commit(types.ONE_INFOS, response.data.data);
               }
-              store.commit(types.ONE_INFOS, response.data.data);
+            })
+            .catch((error) => {
+              store.commit(types.NET_STATUS, error.response.status);
             });
         }
         store.commit(types.LOADING_FLAG, false);
