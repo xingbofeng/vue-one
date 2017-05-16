@@ -19,7 +19,7 @@ export default {
           store.commit(types.NET_STATUS, error.response.status);
         });
     }
-    const oneId = store.state.idList[store.state.idList.length - 1];
+    const oneId = store.state.idList[0];
     if (!store.state.oneList[oneId]) {
       // 请求oneList
       await axios.get(`/api/onelist/${oneId}/0`).then((response) => {
