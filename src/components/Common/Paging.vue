@@ -5,10 +5,14 @@
     >
       上一篇
     </router-link>
-    <Icon
-      type="forward"
-      size="25"
-    ></Icon>
+    <router-link
+      to="/"
+    >
+      <Icon
+        type="forward"
+        size="25"
+      ></Icon>
+    </router-link>
     <router-link
       :to="paging.after"
     >

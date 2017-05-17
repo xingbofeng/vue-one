@@ -5,3 +5,5 @@
 * Docblockr 生成标准注释
 * beforeRouteUpdate
 * JSON的方法实现深复制
+* next()的运用
+* ref为组件和为dom的不同点
