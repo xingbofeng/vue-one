@@ -16,5 +16,5 @@ export const QUESTION = 'QUESTION';
 export const MOVIE = 'MOVIE';
 // 音乐详情
 export const MUSIC = 'MUSIC';
-// 阅读list
-export const READING_LIST = 'READING_LIST';
+// 阅读
+export const READING = 'READING';

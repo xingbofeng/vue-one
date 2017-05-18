@@ -50,8 +50,8 @@ const mutations = {
     });
   },
 
-  [types.READING_LIST](state, readingList) {
-    state.readingList = readingList;
+  [types.READING](state, reading) {
+    state.reading = reading;
   },
 
 };

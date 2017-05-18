@@ -1,4 +1,4 @@
-// import axios from 'axios';
+import axios from 'axios';
 import Essay from './Essay';
 import EssayInfos from './EssayInfos';
 import store from '../../store';
@@ -24,10 +24,23 @@ export default {
       path: '',
       component: Essay,
       name: 'Essay',
-      beforeEnter: (to, before, next) => {
+      beforeEnter: (to, before, next) => { // eslint-disable-line
         store.commit(types.LOADING_FLAG, true);
-        store.commit(types.LOADING_FLAG, false);
-        next();
+        // 先判断是否已有readingList的存在
+        if (Object.keys(store.state.reading).length !== 0) {
+          store.commit(types.LOADING_FLAG, false);
+          return next();
+        }
+        axios.get('/api/reading/index/')
+          .then((response) => {
+            store.commit(types.READING, response.data.data);
+            store.commit(types.LOADING_FLAG, false);
+            return next();
+          })
+          .catch((error) => {
+            store.commit(types.NET_STATUS, error.response.status);
+            return next();
+          });
       },
     },
   ],

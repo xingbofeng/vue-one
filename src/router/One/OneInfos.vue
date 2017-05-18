@@ -57,7 +57,7 @@ export default {
    * [beforeRouteUpdate 在/one/:oneId 与 /one/:oneId的切换是不会触发beforeEnter的导航钩子的]
    * @param  {[object]}   to     [路由对象]
    * @param  {[object]}   before [description]
-   * @param  {Function} next   [next方法，注意next(false)可以强制不进行导航]
+   * @param  {Function}   next   [next方法，注意next(false)可以强制不进行导航]
    * @return
    */
   beforeRouteUpdate(to, before, next) {

@@ -8,7 +8,7 @@ const state = {
   question: {},
   music: {},
   movie: {},
-  readingList: [],
+  reading: {},
 };
 
 export default state;

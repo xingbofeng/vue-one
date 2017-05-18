@@ -8,6 +8,10 @@ const app = express();
 
 app.use('/search/:searchString', search);
 
+/**
+ * http-proxy-middleware代理转发实现跨域请求
+ * @type {String} /api 只转发/api的请求
+ */
 app.use('/api', proxy({
   target: 'http://v3.wufazhuce.com:8000',
   changeOrigin: true,

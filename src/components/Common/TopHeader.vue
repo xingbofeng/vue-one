@@ -39,6 +39,10 @@ export default {
   },
 
   methods: {
+    /**
+     * [changeAside 作用为切换左侧导航的是否展示]
+     * @param  {[type]} flag [true or false]
+     */
     changeAside(flag) {
       // fix 最开始展现的bug(其原因是DOM先渲染才有组件)
       this.$refs.aside.style.display = 'block';

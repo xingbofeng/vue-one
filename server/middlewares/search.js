@@ -1,6 +1,12 @@
 const superagent = require('superagent');
 const cheerio = require('cheerio');
 
+/**
+ * [爬取接口使用]
+ * @param  {[string]}   string [传入的搜索字符串参数]
+ * @param  {[string]}   type   [类型：分为search、searchPic、searchQue、searchThing分别对应搜索图文、图片、问答、东西]
+ * @return {[Promise]}          [爬取接口的Promise对象，实现异步]
+ */
 const spider = (string, type) => new Promise((resolve, reject) => {
   superagent.get(`http://m.wufazhuce.com/${type}?searchString=${string}`)
     .end((error, result) => {
@@ -88,6 +94,13 @@ const spider = (string, type) => new Promise((resolve, reject) => {
     });
 });
 
+/**
+ * [搜索接口中间件]
+ * @param  {[object]}   req  [request]
+ * @param  {[object]}   res  [response]
+ * @param  {Function} next [next函数]
+ * @return {[Function]}        [next函数]
+ */
 module.exports = (req, res, next) => {
   const items = {
     reading: [], // 阅读
