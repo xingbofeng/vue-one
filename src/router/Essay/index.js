@@ -14,10 +14,24 @@ export default {
       path: ':essayId',
       component: EssayInfos,
       name: 'EssayInfos',
-      beforeEnter: (to, before, next) => {
+      beforeEnter: (to, before, next) => { // eslint-disable-line
         store.commit(types.LOADING_FLAG, true);
-        store.commit(types.LOADING_FLAG, false);
-        next();
+        // 先判断是否已有readingList的存在
+        const essayId = to.params.essayId;
+        if (store.state.essayInfos[essayId]) {
+          store.commit(types.LOADING_FLAG, false);
+          return next();
+        }
+        axios.get(`/api/essay/${essayId}`)
+          .then((response) => {
+            store.commit(types.ESSAY_INFOS, response.data.data);
+            store.commit(types.LOADING_FLAG, false);
+            return next();
+          })
+          .catch((error) => {
+            store.commit(types.NET_STATUS, error.response.status);
+            return next();
+          });
       },
     },
     {

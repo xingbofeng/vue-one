@@ -5,6 +5,7 @@ const state = {
   oneList: {},
   oneInfos: {},
   essay: {},
+  essayInfos: {},
   question: {},
   music: {},
   movie: {},

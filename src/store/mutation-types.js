@@ -10,6 +10,8 @@ export const ONE_LIST = 'ONE_LIST';
 export const ONE_INFOS = 'ONE_INFOS';
 // 阅读详情
 export const ESSAY = 'ESSAY';
+// 单页阅读详情
+export const ESSAY_INFOS = 'ESSAY_INFOS';
 // 问答详情
 export const QUESTION = 'QUESTION';
 // 电影详情

@@ -31,6 +31,12 @@ const mutations = {
     });
   },
 
+  [types.ESSAY_INFOS](state, essayInfos) {
+    state.essayInfos = Object.assign({}, state.essayInfos, {
+      [`${essayInfos.content_id}`]: essayInfos,
+    });
+  },
+
   [types.QUESTION](state, question) {
     state.question = Object.assign({}, state.question, {
       [`${question.question_id}`]: question,

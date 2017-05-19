@@ -100,7 +100,7 @@ const oneInfos = (state) => {
  * @return {[array]}       [essayPage data]
  */
 const essay = (state) => {
-  const essay = state.reading.essay;
+  const essay = state.reading.essay || [];
   if (essay.length) {
     // 提取需要的信息并按照时间排序
     return essay;
@@ -108,11 +108,20 @@ const essay = (state) => {
   return [];
 };
 
+const essayInfos = (state) => {
+  const essayId = state.route.params.essayId;
+  if (!essayId) {
+    return {};
+  }
+  return state.essayInfos[essayId];
+};
+
 const getters = {
   home,
   one,
   oneInfos,
   essay,
+  essayInfos,
 };
 
 export default getters;
